@@ -7,10 +7,29 @@ import './App.css'
 import Preview from './components/Preview'
 
 function App() {
+  const data = [
+    {
+      id: 1,
+      title: 'Learn React',
+      description: 'First step is to learn React'
+    },
+    {
+      id: 2,
+      title: 'Learn Node.js',
+      description: 'Some backend skills will be great'
+    },
+    {
+      id: 3,
+      title: 'SQL database',
+      description: 'Database for storing data'
+    },
+  ]
+
   const [formInfo, setFormInfo] = useState({
     title: '',
     description: ''
   })
+  const [todoData, setTodoData] = useState(data)
 
   function titleHandler(e) {
     setFormInfo(prevInfo => {
@@ -29,11 +48,27 @@ function App() {
     })
   }
 
+  function formSubmitHandler(e) {
+    e.preventDefault()
+
+    const newEntry = {
+      title: formInfo.title,
+      description: formInfo.description,
+      id: todoData.length + 1
+    }
+
+    setTodoData(prevData => [...prevData, newEntry])
+    setFormInfo({
+      title: '',
+      description: ''
+    })
+  }
+
   return (
     <>
       <Header />
-      <TodoList />
-      <TodoForm formInfo={formInfo} onTitleChange={titleHandler} onDescriptionChange={descriptionHandler} />
+      <TodoList todoData={todoData} />
+      <TodoForm formInfo={formInfo} onTitleChange={titleHandler} onDescriptionChange={descriptionHandler} onFormSubmit={formSubmitHandler} />
       <Preview formInfo={formInfo} />
     </>
   )

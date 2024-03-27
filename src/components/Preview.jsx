@@ -1,9 +1,9 @@
 function Preview({ formInfo }) {
     return (
-        <section>
-            <h2>New Todo's title is: {formInfo.title}</h2>
-            <p>New description is: {formInfo.description}</p>
-        </section>
+        formInfo.title || formInfo.description ? <section>
+            <h2>Preview title: {formInfo.title}</h2>
+            <p>Preview description: {formInfo.description}</p>
+        </section> : null
     )
 }
 
