@@ -3,7 +3,6 @@ import { useState } from 'react'
 import Header from './components/Header'
 import TodoList from './components/TodoList'
 import TodoForm from './components/TodoForm'
-import './App.css'
 import Preview from './components/Preview'
 
 function App() {
@@ -65,12 +64,12 @@ function App() {
   }
 
   return (
-    <>
+    <main className='bg-teal-900 text-white min-h-screen p-8 flex flex-col gap-8'>
       <Header />
       <TodoList todoData={todoData} />
       <TodoForm formInfo={formInfo} onTitleChange={titleHandler} onDescriptionChange={descriptionHandler} onFormSubmit={formSubmitHandler} />
       <Preview formInfo={formInfo} />
-    </>
+    </main>
   )
 }
 

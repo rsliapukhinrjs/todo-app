@@ -1,7 +1,7 @@
 function Header() {
     return (
         <header>
-            <h1>Todo App</h1>
+            <h1 className="text-3xl uppercase">Todo App</h1>
         </header>
     )
 }
